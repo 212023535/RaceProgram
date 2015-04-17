@@ -1,0 +1,60 @@
+package RaceProgram.Domain;
+
+import java.io.Serializable;
+
+/**
+ * Created by student on 2015/04/17.
+ */
+public class Bikes implements Serializable
+{
+    private int bikeNumber;
+    private String driverName;
+    private String bikeType;
+    private String classCode;
+
+    private Bikes(){}
+
+    public Bikes(Builder builder)
+    {
+        classCode = builder.classCode;
+        bikeNumber = builder.bikeNumber;
+        driverName = builder.driverName;
+        bikeType = builder.bikeType;
+    }
+
+    public static class Builder
+    {
+        private String driverName;
+        private int bikeNumber;
+        private String classCode;
+        private String bikeType;
+
+        public Builder(int bikeNumber)
+        {
+            this.bikeNumber = bikeNumber;
+        }
+
+        public Builder classCode(String value)
+        {
+            this.classCode = value;
+            return this;
+        }
+
+        public Builder driverName(String value)
+        {
+            this.driverName = value;
+            return this;
+        }
+
+        public Builder bikeType(String value)
+        {
+            this.bikeType = value;
+            return this;
+        }
+
+        public Bikes build()
+        {
+            return new Bikes(this);
+        }
+    }
+}
